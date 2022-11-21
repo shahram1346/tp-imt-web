@@ -1,7 +1,7 @@
 <template>
   <div class="submit-form">
     <div v-if="!submitted">
-      <h4>Ajouter une personne</h4>
+      <h4>Création d'une personne dans l'annuaire</h4>
     
       <div class="col-sm-6">
         <label for="id" class="form-label">Identifiant</label>
@@ -30,7 +30,7 @@
 <br/>
 <div class="col-sm-6">
 
-      <button @click="creerPersonne" class="btn btn-success">Ajouter</button>
+      <button @click="creerPersonne" class="btn btn-outline-primary">Ajouter dans l'annuaire</button>
     </div>
     </div>
 

@@ -3,8 +3,8 @@
     <div class="col-sm-6">
       <label for="id" class="form-label">Identifiant</label>
       <input type="text" class="form-control" id="id" v-model="currentPersonne.id" name="id">
-    </div>  
-    <div class="col-sm-6">
+    </div>
+     <div class="col-sm-6">
       <label for="name" class="form-label">Name</label>
       <input type="text" class="form-control" id="name" v-model="currentPersonne.name" name="name">
     </div>  
@@ -12,33 +12,31 @@
       <label for="surname" class="form-label">Surname</label>
       <input type="text" class="form-control" id="surname" v-model="currentPersonne.surname" name="surname">
     </div>  
-
     <div class="col-sm-6">
       <label for="phone" class="form-label">Phone</label>
       <input type="text" class="form-control" id="phone" v-model="currentPersonne.phone" name="phone">
     </div>  
-
     <div class="col-sm-6">
       <label for="city" class="form-label">City</label>
       <input type="text" class="form-control" id="city" v-model="currentPersonne.city" name="city">
     </div>  
 
-        
+       
     <!-- A INCLURE DANS LE FORM -->
     <button class="badge badge-danger mr-2"
-      @click="deletePersonne"
+      @click="deletePersonne(currentPersonne)"
     >
       Supprimer
     </button>
 
     <!-- A INCLURE DANS LE FORM -->
     <button type="submit" class="badge badge-success"
-      @click="updatePersonne"
+      @click="updatePersonne(currentPersonne)"
     >
       Modifier
     </button>
-    <p>{{ message }}</p>
   </div>
+   <p>{{ message }}</p>
     
 </template>
 
@@ -50,7 +48,7 @@ export default {
   data() {
     return {
       currentPersonne: null,
-      message: ''
+      message:'' 
     };
   },
   methods: {
@@ -69,8 +67,12 @@ export default {
       PersonneDataService.update(this.currentPersonne)
       .then(response => {
           this.currentPersonne = response.data;
+          this.message = 'Personne modifiée avec succès!';
           console.log(response.data);
-        })
+          /*this.$router.push({ name: "personnes" });*/
+
+          
+         })
         .catch(e => {
           console.log(e);
         });
@@ -82,6 +84,9 @@ export default {
       .then(response => {
           this.currentPersonne = response.data;
           console.log(response.data);
+          this.$router.push({ name: "personnes" });
+           
+
         })
         .catch(e => {
           console.log(e);

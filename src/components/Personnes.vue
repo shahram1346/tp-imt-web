@@ -1,3 +1,4 @@
+
 <template>
   
   <ul>
@@ -7,7 +8,7 @@
       :key="id"
       @click="setActivePersonne(personne, id)"
     >
-      {{ personne.surname }} {{ personne.name }}
+       {{ personne.surname }} {{ personne.name }}
     </li>
   </ul>
 

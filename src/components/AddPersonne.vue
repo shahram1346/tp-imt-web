@@ -31,12 +31,14 @@
 <div class="col-sm-6">
 
       <button @click="creerPersonne" class="btn btn-outline-primary">Ajouter dans l'annuaire</button>
+      <p>{{ message }}</p>
     </div>
     </div>
-
     <div v-else>
       <h4>Personne ajoutée avec succès!</h4>
-      <button class="btn btn-success" @click="resetForm">Ajouter une nouvelle personne</button>
+      <button class="badge badge-success" @click="resetForm">Ajouter une nouvelle personne</button>
+      <br/>
+      <a href="personnes" class="badge badge-info">Retour à l'annuaire général </a>
     </div>
   </div>
 </template>
@@ -71,11 +73,16 @@ export default {
 
       PersonneDataService.create(data)
       .then(response => {
-          this.submitted = true;
           console.log(response.data);
+          console.log("Oui");
+          this.submitted = true;
+          
         })
         .catch(e => {
           console.log(e);
+          console.log("Non");
+          this.message = 'Identifiant déjà existant';
+          
         });
       
     },

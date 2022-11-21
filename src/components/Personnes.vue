@@ -1,17 +1,19 @@
 
 <template>
+  <div class="dropdown-menu d-block position-static pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px">
   
-  <ul>
-    <li class=""
+  <ul class="list-unstyled mb-0">
+    <li><a class="dropdown-item d-flex align-items-center gap-2 py-2"
       :class="{ active: id == currentIndex }"
       v-for="(personne, id) in personnes"
       :key="id"
       @click="setActivePersonne(personne, id)"
     >
        {{ personne.surname }} {{ personne.name }}
+     </a>
     </li>
   </ul>
-
+</div>
   <div v-if="currentPersonne">
     {{ currentPersonne.name }}
     {{ currentPersonne.surname }}
